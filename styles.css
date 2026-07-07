@@ -123,6 +123,16 @@ section { padding: 150px 0; }
   padding-bottom: 140px;
   position: relative;
   overflow: hidden;
+  background-color: var(--cream);
+  /* Soft diagonal light streaks, referenced from the Hanzo template's hero background */
+  background-image: repeating-linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0) 0px,
+    rgba(255, 255, 255, 0) 90px,
+    rgba(255, 255, 255, 0.65) 130px,
+    rgba(255, 255, 255, 0) 190px,
+    rgba(255, 255, 255, 0) 340px
+  );
 }
 
 .hero-glow {
@@ -391,8 +401,10 @@ section { padding: 150px 0; }
   width: 300px;
   height: 560px;
   margin: 0 auto;
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
+  border: 8px solid #FFFFFF;
+  background: #fff;
   box-shadow: 0 45px 90px -30px rgba(28, 28, 26, 0.4), 0 0 0 1px var(--border-strong);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -466,11 +478,23 @@ section { padding: 150px 0; }
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+  z-index: 1;
 }
 .phone-slide.active { opacity: 1; }
+
+/* Real reel video/image — drop a <video> or <img class="slide-media"> as the
+   first child inside .phone-slide and it will fill the card behind the caption. */
+.slide-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 .phone-slide .slide-caption {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   color: #fff;
   font-size: 14.5px;
   line-height: 1.5;
