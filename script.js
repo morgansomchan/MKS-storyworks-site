@@ -106,6 +106,7 @@
   const slides = document.querySelectorAll('.phone-slide');
   if (!tabs.length || !slides.length) return;
 
+  const progressBars = document.querySelectorAll('#reelProgress span');
   let current = 0;
   let timer = null;
 
@@ -113,6 +114,11 @@
     current = index;
     tabs.forEach((t) => t.classList.toggle('active', Number(t.dataset.slide) === index));
     slides.forEach((s) => s.classList.toggle('active', Number(s.dataset.slide) === index));
+    progressBars.forEach((bar, i) => {
+      bar.classList.remove('active', 'done');
+      if (i < index) bar.classList.add('done');
+      if (i === index) bar.classList.add('active');
+    });
   }
 
   function next() {
