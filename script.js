@@ -139,3 +139,56 @@
 
   restartAutoplay();
 })();
+
+// Phone 3D tilt + glare — mouse-reactive, inspired by the "Social Media Mockup"
+// Framer component's tilt/glow/glare effect, built here in plain JS/CSS.
+(function () {
+  const wrap = document.querySelector('.hero-phone');
+  const card = document.querySelector('.phone-frame');
+  const glare = document.getElementById('phoneGlare');
+  if (!wrap || !card) return;
+
+  const MAX_TILT = 10; // degrees
+  let rafId = null;
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  function apply() {
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+    card.style.transform =
+      'perspective(1200px) translateY(-6px) rotateX(' + currentY.toFixed(2) + 'deg) rotateY(' + currentX.toFixed(2) + 'deg)';
+    if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+      rafId = requestAnimationFrame(apply);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function startLoop() {
+    if (!rafId) rafId = requestAnimationFrame(apply);
+  }
+
+  wrap.addEventListener('mousemove', (event) => {
+    const rect = wrap.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width; // 0..1
+    const py = (event.clientY - rect.top) / rect.height; // 0..1
+    targetX = (px - 0.5) * MAX_TILT * 2;
+    targetY = -(py - 0.5) * MAX_TILT * 2;
+    if (glare) {
+      glare.style.opacity = '1';
+      glare.style.background =
+        'radial-gradient(circle at ' + (px * 100).toFixed(0) + '% ' + (py * 100).toFixed(0) + '%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%)';
+    }
+    startLoop();
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    if (glare) glare.style.opacity = '0';
+    startLoop();
+  });
+})();
