@@ -29,8 +29,10 @@
 })();
 
 // Scroll-reveal: fade/slide elements up into view once, then leave them alone.
+// Also covers .fan-reveal (How It Works cards), which fades opacity only so
+// it doesn't fight the rotated transform those cards already have.
 (function () {
-  const targets = document.querySelectorAll('.reveal');
+  const targets = document.querySelectorAll('.reveal, .fan-reveal');
   if (!targets.length) return;
 
   if (!('IntersectionObserver' in window)) {
@@ -185,63 +187,6 @@
   restartAutoplay();
 })();
 
-// How It Works — scroll-scrubbed stacked/fanned cards. As the pinned section
-// scrolls through view, each card animates from a scattered position into a
-// neat overlapping fan, staggered one after another.
-(function () {
-  const track = document.getElementById('stackTrack');
-  const cards = document.querySelectorAll('.stack-card');
-  if (!track || !cards.length) return;
-  if (window.matchMedia('(max-width: 860px)').matches) return; // static stack on mobile
-
-  const scattered = [
-    { x: -80, y: -40, rot: -11 },
-    { x: 55, y: 25, rot: 8 },
-    { x: -25, y: 70, rot: -5 }
-  ];
-  const settled = [
-    { x: -20, y: -16, rot: -6 },
-    { x: 0, y: 0, rot: 0 },
-    { x: 20, y: 16, rot: 6 }
-  ];
-
-  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  let ticking = false;
-
-  function update() {
-    ticking = false;
-    const rect = track.getBoundingClientRect();
-    const total = rect.height - window.innerHeight;
-    const progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
-    const n = cards.length;
-
-    cards.forEach((card, i) => {
-      const start = i / n;
-      const end = start + (1 / n) * 1.5;
-      const local = clamp((progress - start) / (end - start), 0, 1);
-      const eased = 1 - Math.pow(1 - local, 3);
-      const from = scattered[i];
-      const to = settled[i];
-      const x = lerp(from.x, to.x, eased);
-      const y = lerp(from.y, to.y, eased);
-      const rot = lerp(from.rot, to.rot, eased);
-      const opacity = clamp(local * 2.2, 0, 1);
-      card.style.transform = 'translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
-      card.style.opacity = String(opacity);
-      card.style.zIndex = String(i + 1);
-    });
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
-})();
+// How It Works cards use the same .reveal fade-up-on-scroll system as the
+// rest of the site (see the IntersectionObserver block above) — their fanned
+// rotation and overlap is handled entirely in CSS.

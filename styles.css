@@ -18,24 +18,13 @@
 
 html { scroll-behavior: smooth; }
 
+/* Silver diagonal light-streak texture — a normal scrolling background (not
+   fixed), so it moves with the page content like the Hanzo reference. */
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
   background-color: #EAE8E1;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-  position: relative;
-}
-
-/* Silver diagonal light-streak texture, applied site-wide (fixed so it stays
-   consistent behind every section as you scroll) */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
   background-image: repeating-linear-gradient(
     112deg,
     rgba(255, 255, 255, 0) 0px,
@@ -44,6 +33,9 @@ body::before {
     rgba(255, 255, 255, 0) 165px,
     rgba(255, 255, 255, 0) 300px
   );
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
 }
 
 h1, h2, h3, .serif {
@@ -256,90 +248,88 @@ section { padding: 150px 0; }
 .section-head h2 { font-size: 40px; margin-bottom: 18px; font-weight: 600; }
 .section-head .sub { color: var(--ink-soft); font-size: 16.5px; }
 
-/* How It Works — scroll-scrubbed stacked/fanned cards, inspired by the Hanzo
-   template's process section. Cards start scattered and settle into a neat
-   overlapping fan as the section scrolls through view. */
-.stack-section { padding-bottom: 0; }
-
-.stack-track {
+/* How It Works — fanned, overlapping cards at gentle rotated angles, with
+   hand-drawn-style connecting arrows, inspired by the Hanzo template's
+   process section. */
+.fan-cards {
   position: relative;
-  height: 300vh;
-}
-
-@media (max-width: 860px) {
-  .stack-track { height: auto; }
-}
-
-.stack-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding: 30px 0 10px;
 }
 
-@media (max-width: 860px) {
-  .stack-sticky {
-    position: static;
-    height: auto;
-    padding: 0 0 20px;
-  }
+@media (max-width: 900px) {
+  .fan-cards { flex-direction: column; gap: 28px; padding: 10px 0; }
 }
 
-.stack-cards {
+.fan-card {
   position: relative;
-  width: min(480px, 88vw);
-  height: 360px;
-}
-
-@media (max-width: 860px) {
-  .stack-cards {
-    position: static;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-}
-
-.stack-card {
-  position: absolute;
-  inset: 0;
   background: #fff;
-  border-radius: 26px;
+  border-radius: 22px;
   border: 1px solid var(--border);
-  box-shadow: 0 40px 70px -34px rgba(28, 28, 26, 0.32);
-  padding: 42px 38px;
+  box-shadow: 0 34px 60px -30px rgba(28, 28, 26, 0.3);
+  width: 300px;
+  min-height: 300px;
+  padding: 34px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.fan-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02) !important;
+  box-shadow: 0 44px 74px -28px rgba(28, 28, 26, 0.36);
+  z-index: 5 !important;
+}
+
+.fan-card-1 { transform: rotate(-7deg) translateY(14px); margin-right: -36px; z-index: 1; }
+.fan-card-2 { transform: rotate(3deg) translateY(-16px); z-index: 3; }
+.fan-card-3 { transform: rotate(-4deg) translateY(20px); margin-left: -36px; z-index: 2; }
+
+/* Opacity-only fade-in that doesn't fight the rotated transform above
+   (kept separate from .reveal, which also animates transform). */
+.fan-reveal {
   opacity: 0;
-  will-change: transform, opacity;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fan-reveal.is-visible { opacity: 1; }
+.fan-card-2.fan-reveal { transition-delay: 0.1s; }
+.fan-card-3.fan-reveal { transition-delay: 0.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .fan-reveal { opacity: 1; transition: none; }
 }
 
-@media (max-width: 860px) {
-  .stack-card {
-    position: static;
-    opacity: 1 !important;
-    transform: none !important;
-    box-shadow: 0 24px 50px -34px rgba(28, 28, 26, 0.25);
-  }
+@media (max-width: 900px) {
+  .fan-card-1, .fan-card-2, .fan-card-3 { transform: none; margin: 0; width: 100%; max-width: 340px; }
 }
 
-.stack-card-num {
+.fan-num {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 60px;
-  color: var(--sage);
-  opacity: 0.28;
+  font-size: 56px;
   line-height: 1;
-  margin-bottom: 18px;
+  color: var(--ink);
 }
 
-.stack-card h3 { font-size: 26px; margin-bottom: 12px; font-weight: 600; }
-.stack-card p { color: var(--ink-soft); font-size: 15.5px; margin: 0; }
+.fan-text h3 { font-size: 20px; margin-bottom: 8px; font-weight: 600; }
+.fan-text p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+.fan-connector {
+  position: absolute;
+  top: -8%;
+  width: 84px;
+  height: 84px;
+  color: var(--sage);
+  pointer-events: none;
+  z-index: 4;
+}
+.fan-connector-1 { left: 26%; transform: translateX(-50%); }
+.fan-connector-2 { left: 74%; transform: translateX(-50%) scaleX(-1); }
+
+@media (max-width: 900px) {
+  .fan-connector { display: none; }
+}
 
 /* Case study */
 .case-intro {
