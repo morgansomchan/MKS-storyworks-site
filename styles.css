@@ -22,10 +22,28 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
-  background: var(--cream);
+  background-color: #EAE8E1;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
+  position: relative;
+}
+
+/* Silver diagonal light-streak texture, applied site-wide (fixed so it stays
+   consistent behind every section as you scroll) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0) 0px,
+    rgba(255, 255, 255, 0) 80px,
+    rgba(255, 255, 255, 0.6) 115px,
+    rgba(255, 255, 255, 0) 165px,
+    rgba(255, 255, 255, 0) 300px
+  );
 }
 
 h1, h2, h3, .serif {
@@ -51,7 +69,7 @@ section { padding: 150px 0; }
   .container { padding: 0 24px; }
 }
 
-.section-tinted { background: var(--off-white); }
+.section-tinted { background: rgba(28, 28, 26, 0.035); }
 
 /* Eyebrow — pill tag, gives every section a visible anchor */
 .eyebrow {
@@ -104,7 +122,7 @@ section { padding: 150px 0; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 24px 0;
-  background: rgba(244, 241, 233, 0.82);
+  background: rgba(234, 232, 225, 0.78);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-strong);
 }
@@ -117,22 +135,12 @@ section { padding: 150px 0; }
 }
 .nav .btn { padding: 10px 22px; font-size: 13.5px; }
 
-/* Hero */
+/* Hero — silver streak texture now comes from body::before, shared site-wide */
 .hero {
   padding-top: 210px;
   padding-bottom: 140px;
   position: relative;
   overflow: hidden;
-  background-color: var(--cream);
-  /* Soft diagonal light streaks, referenced from the Hanzo template's hero background */
-  background-image: repeating-linear-gradient(
-    112deg,
-    rgba(255, 255, 255, 0) 0px,
-    rgba(255, 255, 255, 0) 90px,
-    rgba(255, 255, 255, 0.65) 130px,
-    rgba(255, 255, 255, 0) 190px,
-    rgba(255, 255, 255, 0) 340px
-  );
 }
 
 .hero-glow {
@@ -243,87 +251,95 @@ section { padding: 150px 0; }
   .marquee-track { animation: none; }
 }
 
-/* Silver textured background — same diagonal streak device as the hero, in a cooler grey tone */
-.silver-section {
-  position: relative;
-  background-color: #E9E8E2;
-  background-image: repeating-linear-gradient(
-    112deg,
-    rgba(255, 255, 255, 0) 0px,
-    rgba(255, 255, 255, 0) 80px,
-    rgba(255, 255, 255, 0.65) 115px,
-    rgba(255, 255, 255, 0) 165px,
-    rgba(255, 255, 255, 0) 300px
-  );
-}
-
 /* Section head */
 .section-head { text-align: center; max-width: 620px; margin: 0 auto 72px; }
 .section-head h2 { font-size: 40px; margin-bottom: 18px; font-weight: 600; }
 .section-head .sub { color: var(--ink-soft); font-size: 16.5px; }
 
-/* How it works — icon cards with connecting arrows */
-.steps {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  gap: 20px;
-  align-items: stretch;
+/* How It Works — scroll-scrubbed stacked/fanned cards, inspired by the Hanzo
+   template's process section. Cards start scattered and settle into a neat
+   overlapping fan as the section scrolls through view. */
+.stack-section { padding-bottom: 0; }
+
+.stack-track {
+  position: relative;
+  height: 300vh;
 }
 
 @media (max-width: 860px) {
-  .steps { grid-template-columns: 1fr; gap: 20px; }
-  .step-arrow { transform: rotate(90deg); margin: 4px auto; }
+  .stack-track { height: auto; }
 }
 
-.step {
+.stack-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .stack-sticky {
+    position: static;
+    height: auto;
+    padding: 0 0 20px;
+  }
+}
+
+.stack-cards {
+  position: relative;
+  width: min(480px, 88vw);
+  height: 360px;
+}
+
+@media (max-width: 860px) {
+  .stack-cards {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.stack-card {
+  position: absolute;
+  inset: 0;
   background: #fff;
-  border-radius: 22px;
-  padding: 38px 30px;
-  text-align: left;
+  border-radius: 26px;
   border: 1px solid var(--border);
-  box-shadow: 0 24px 50px -34px rgba(28, 28, 26, 0.25);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-}
-.step:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 34px 64px -30px rgba(28, 28, 26, 0.32);
-}
-
-.step-arrow {
+  box-shadow: 0 40px 70px -34px rgba(28, 28, 26, 0.32);
+  padding: 42px 38px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--border-strong);
-  width: 28px;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  will-change: transform, opacity;
 }
-.step-arrow svg { width: 22px; height: 22px; }
 
-.step-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--sage-pill);
-  border: 1px solid rgba(44, 74, 59, 0.16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sage);
-  margin-bottom: 22px;
+@media (max-width: 860px) {
+  .stack-card {
+    position: static;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: 0 24px 50px -34px rgba(28, 28, 26, 0.25);
+  }
 }
-.step-icon svg { width: 24px; height: 24px; }
 
-.step .step-num {
+.stack-card-num {
   font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 60px;
   color: var(--sage);
-  margin-bottom: 8px;
+  opacity: 0.28;
+  line-height: 1;
+  margin-bottom: 18px;
 }
 
-.step h3 { font-size: 23px; margin-bottom: 12px; font-weight: 600; }
-.step p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+.stack-card h3 { font-size: 26px; margin-bottom: 12px; font-weight: 600; }
+.stack-card p { color: var(--ink-soft); font-size: 15.5px; margin: 0; }
 
 /* Case study */
 .case-intro {
@@ -471,10 +487,9 @@ section { padding: 150px 0; }
   height: 100%;
 }
 
-/* Ambient glow + 3D tilt container, styled after the paid
-   "Social Media Mockup" Framer component's tilt/glow/glare effect */
+/* Ambient glow behind the phone — static, no cursor tracking */
 .hero-phone {
-  perspective: 1200px;
+  position: relative;
 }
 .hero-phone::before {
   content: '';
@@ -488,21 +503,6 @@ section { padding: 150px 0; }
   filter: blur(10px);
   z-index: -1;
   pointer-events: none;
-}
-
-.phone-frame {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.phone-glare {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 55%);
-  transition: opacity 0.3s ease;
 }
 
 .reel-progress {
@@ -556,15 +556,20 @@ section { padding: 150px 0; }
   flex-shrink: 0;
 }
 
+/* Reel slides — vertical swipe-up transition, like native Reels/TikTok */
+.phone-screen { overflow: hidden; touch-action: pan-y; cursor: grab; }
+.phone-screen:active { cursor: grabbing; }
+
 .phone-slide {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-end;
   padding: 32px 22px;
-  opacity: 0;
   background: linear-gradient(165deg, #1E2B24 0%, #2C4A3B 55%, #14201A 100%);
-  transition: opacity 0.5s ease;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
 }
 .phone-slide::before {
   content: '';
@@ -573,7 +578,8 @@ section { padding: 150px 0; }
   background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
   z-index: 1;
 }
-.phone-slide.active { opacity: 1; }
+.phone-slide.active { transform: translateY(0); z-index: 2; }
+.phone-slide.prev { transform: translateY(-100%); }
 
 /* Real reel video/image — drop a <video> or <img class="slide-media"> as the
    first child inside .phone-slide and it will fill the card behind the caption. */

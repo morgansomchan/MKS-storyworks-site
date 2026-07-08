@@ -100,34 +100,50 @@
   numbers.forEach((el) => observer.observe(el));
 })();
 
-// Work Showcase phone mockup — tab-controlled slides, auto-advance between clicks.
+// Work Showcase phone mockup — vertical swipe-up transitions, like native
+// Reels/TikTok. Advances via tab clicks, auto-advance, or a real swipe/drag
+// on the phone screen itself. Videos autoplay from the moment the page loads
+// (autoplay/muted/playsinline on the <video> tags) — swiping just changes
+// which one is on top.
 (function () {
   const tabs = document.querySelectorAll('.showcase-tab');
   const slides = document.querySelectorAll('.phone-slide');
-  if (!tabs.length || !slides.length) return;
+  const screen = document.getElementById('phoneScreen');
+  if (!slides.length) return;
 
   const progressBars = document.querySelectorAll('#reelProgress span');
   let current = 0;
   let timer = null;
 
   function show(index) {
-    current = index;
-    tabs.forEach((t) => t.classList.toggle('active', Number(t.dataset.slide) === index));
-    slides.forEach((s) => s.classList.toggle('active', Number(s.dataset.slide) === index));
+    const total = slides.length;
+    current = ((index % total) + total) % total;
+
+    tabs.forEach((t) => t.classList.toggle('active', Number(t.dataset.slide) === current));
+
+    slides.forEach((s) => {
+      const i = Number(s.dataset.slide);
+      s.classList.remove('active', 'prev');
+      if (i === current) {
+        s.classList.add('active');
+      } else if (i < current) {
+        s.classList.add('prev');
+      }
+    });
+
     progressBars.forEach((bar, i) => {
       bar.classList.remove('active', 'done');
-      if (i < index) bar.classList.add('done');
-      if (i === index) bar.classList.add('active');
+      if (i < current) bar.classList.add('done');
+      if (i === current) bar.classList.add('active');
     });
   }
 
-  function next() {
-    show((current + 1) % slides.length);
-  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
 
   function restartAutoplay() {
     if (timer) clearInterval(timer);
-    timer = setInterval(next, 4000);
+    timer = setInterval(next, 5000);
   }
 
   tabs.forEach((tab) => {
@@ -137,58 +153,95 @@
     });
   });
 
+  // Swipe up = next reel, swipe down = previous reel (touch + mouse drag).
+  if (screen) {
+    let startY = null;
+
+    screen.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+    screen.addEventListener('touchend', (e) => {
+      if (startY === null) return;
+      const deltaY = e.changedTouches[0].clientY - startY;
+      if (Math.abs(deltaY) > 40) {
+        deltaY < 0 ? next() : prev();
+        restartAutoplay();
+      }
+      startY = null;
+    });
+
+    let dragStartY = null;
+    screen.addEventListener('mousedown', (e) => { dragStartY = e.clientY; });
+    window.addEventListener('mouseup', (e) => {
+      if (dragStartY === null) return;
+      const deltaY = e.clientY - dragStartY;
+      if (Math.abs(deltaY) > 40) {
+        deltaY < 0 ? next() : prev();
+        restartAutoplay();
+      }
+      dragStartY = null;
+    });
+  }
+
+  show(0);
   restartAutoplay();
 })();
 
-// Phone 3D tilt + glare — mouse-reactive, inspired by the "Social Media Mockup"
-// Framer component's tilt/glow/glare effect, built here in plain JS/CSS.
+// How It Works — scroll-scrubbed stacked/fanned cards. As the pinned section
+// scrolls through view, each card animates from a scattered position into a
+// neat overlapping fan, staggered one after another.
 (function () {
-  const wrap = document.querySelector('.hero-phone');
-  const card = document.querySelector('.phone-frame');
-  const glare = document.getElementById('phoneGlare');
-  if (!wrap || !card) return;
+  const track = document.getElementById('stackTrack');
+  const cards = document.querySelectorAll('.stack-card');
+  if (!track || !cards.length) return;
+  if (window.matchMedia('(max-width: 860px)').matches) return; // static stack on mobile
 
-  const MAX_TILT = 10; // degrees
-  let rafId = null;
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
+  const scattered = [
+    { x: -80, y: -40, rot: -11 },
+    { x: 55, y: 25, rot: 8 },
+    { x: -25, y: 70, rot: -5 }
+  ];
+  const settled = [
+    { x: -20, y: -16, rot: -6 },
+    { x: 0, y: 0, rot: 0 },
+    { x: 20, y: 16, rot: 6 }
+  ];
 
-  function apply() {
-    currentX += (targetX - currentX) * 0.12;
-    currentY += (targetY - currentY) * 0.12;
-    card.style.transform =
-      'perspective(1200px) translateY(-6px) rotateX(' + currentY.toFixed(2) + 'deg) rotateY(' + currentX.toFixed(2) + 'deg)';
-    if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
-      rafId = requestAnimationFrame(apply);
-    } else {
-      rafId = null;
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const rect = track.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    const progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
+    const n = cards.length;
+
+    cards.forEach((card, i) => {
+      const start = i / n;
+      const end = start + (1 / n) * 1.5;
+      const local = clamp((progress - start) / (end - start), 0, 1);
+      const eased = 1 - Math.pow(1 - local, 3);
+      const from = scattered[i];
+      const to = settled[i];
+      const x = lerp(from.x, to.x, eased);
+      const y = lerp(from.y, to.y, eased);
+      const rot = lerp(from.rot, to.rot, eased);
+      const opacity = clamp(local * 2.2, 0, 1);
+      card.style.transform = 'translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
+      card.style.opacity = String(opacity);
+      card.style.zIndex = String(i + 1);
+    });
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
     }
   }
 
-  function startLoop() {
-    if (!rafId) rafId = requestAnimationFrame(apply);
-  }
-
-  wrap.addEventListener('mousemove', (event) => {
-    const rect = wrap.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width; // 0..1
-    const py = (event.clientY - rect.top) / rect.height; // 0..1
-    targetX = (px - 0.5) * MAX_TILT * 2;
-    targetY = -(py - 0.5) * MAX_TILT * 2;
-    if (glare) {
-      glare.style.opacity = '1';
-      glare.style.background =
-        'radial-gradient(circle at ' + (px * 100).toFixed(0) + '% ' + (py * 100).toFixed(0) + '%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%)';
-    }
-    startLoop();
-  });
-
-  wrap.addEventListener('mouseleave', () => {
-    targetX = 0;
-    targetY = 0;
-    if (glare) glare.style.opacity = '0';
-    startLoop();
-  });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();
