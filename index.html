@@ -1,226 +1,1127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MKS Storyworks — The Go-To Storytelling Partner for F&B</title>
-<meta name="description" content="Story-driven sales and content strategy for food & beverage brands in Bangkok. I turn one-time viewers into loyal regulars.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MKS Storyworks — Social media strategy for F&amp;B and lifestyle brands</title>
+<meta name="description" content="I help restaurants and lifestyle brands turn one-time viewers into loyal regulars — story, content, and the ecosystem that converts it. Solo consultant, five clients at a time." />
+<meta name="theme-color" content="#f2eee7" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MKS Storyworks — Turning one-time viewers into loyal regulars" />
+<meta property="og:description" content="You don't have a content problem. You have an ecosystem problem." />
+<meta property="og:image" content="assets/img/ledalat-02.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>document.documentElement.className += ' js';</script>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<nav class="nav">
-  <div class="container">
-    <div class="nav-logo">MKS Storyworks</div>
-    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-  </div>
-</nav>
+<div class="bg" aria-hidden="true">
+  <span class="streak s1"></span>
+  <span class="streak s2"></span>
+  <span class="streak s3"></span>
+</div>
 
-<header class="hero">
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="hero-wrap">
-      <div class="hero-copy">
-        <div class="eyebrow">Story-Driven Sales for F&amp;B</div>
-        <h1>Turn Your Story Into Your Best <em>Sales Asset</em></h1>
-        <p class="tagline">Turning one-time viewers into loyal regulars.</p>
-        <p class="sub">I help restaurants, cafes, and bars in Bangkok craft narratives that convert prospects into regulars — so your brand speaks for you before you ever say a word.</p>
-        <a href="#contact" class="btn btn-primary">Get In Touch</a>
-        <div class="showcase-tabs" id="showcaseTabs">
-          <button class="showcase-tab active" data-slide="0"><span class="dot"></span>Behind the pass at Le Dalat</button>
-          <button class="showcase-tab" data-slide="1"><span class="dot"></span>The 6am prep most guests never see</button>
-          <button class="showcase-tab" data-slide="2"><span class="dot"></span>One dish, one story</button>
-        </div>
-      </div>
-      <div class="hero-phone">
-        <div class="phone-frame">
-          <div class="reel-progress" id="reelProgress">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="reel-handle"><span class="avatar"></span>mksstoryworks<svg class="verified" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.3 2.4.4 2.7-2.4 1.3-1.3 2.4-2.7-.4L12 22l-2.4-1.3-2.7.4-1.3-2.4-2.4-1.3.4-2.7L2.3 12.3l1.3-2.4-.4-2.7 2.4-1.3L6.9 3.5l2.7.4L12 2z"/><path d="M9.5 12.5l1.8 1.8 3.7-4.1" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="phone-screen" id="phoneScreen">
-            <div class="phone-slide active" data-slide="0">
-              <video class="slide-media" src="1.reel.mp4" autoplay muted loop playsinline></video>
-              <div class="slide-caption"><span class="tag">Reel</span>Behind the pass at Le Dalat</div>
-            </div>
-            <div class="phone-slide" data-slide="1">
-              <video class="slide-media" src="2.reel.mp4" autoplay muted loop playsinline></video>
-              <div class="slide-caption"><span class="tag">Reel</span>The 6am prep most guests never see</div>
-            </div>
-            <div class="phone-slide" data-slide="2">
-              <video class="slide-media" src="3.reel.mp4" autoplay muted loop playsinline></video>
-              <div class="slide-caption"><span class="tag">Reel</span>One dish, one story</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="MKS Storyworks — home">
+      <span>MKS Storyworks</span>
+    </a>
+    <a class="btn btn-primary" href="book.html">Book a call</a>
   </div>
 </header>
 
-<div class="marquee">
-  <div class="marquee-track">
-    <span class="marquee-item">Story-Driven Content</span>
-    <span class="marquee-item">Food &amp; Beverage Focused</span>
-    <span class="marquee-item">Bangkok-Based</span>
-    <span class="marquee-item">Loyal Regulars, Not One-Time Viewers</span>
-    <span class="marquee-item">Story-Driven Content</span>
-    <span class="marquee-item">Food &amp; Beverage Focused</span>
-    <span class="marquee-item">Bangkok-Based</span>
-    <span class="marquee-item">Loyal Regulars, Not One-Time Viewers</span>
-  </div>
-</div>
+<main>
 
-<section id="how-it-works">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Our Process, Explained</div>
-      <h2>Here's How It Works</h2>
-      <p class="sub">A simple, three-step framework — built around your real story, not a template.</p>
-    </div>
-    <div class="fan-cards">
-      <div class="fan-card fan-card-1 fan-reveal">
-        <div class="fan-num">1</div>
-        <div class="fan-text">
-          <h3>Uncover</h3>
-          <p>We dig into your brand's real story — who you are, why you started, and what genuinely makes you different.</p>
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+
+      <p class="pill reveal"><span class="dot"></span>The story you already have</p>
+
+      <h1 class="reveal d1">Turning one-time viewers into <span class="em">loyal regulars.</span></h1>
+
+      <p class="subhead reveal d2">
+        You don't have a content problem. You have an <strong>ecosystem problem.</strong>
+      </p>
+
+      <div class="vsl tilt">
+        <!-- Swap in the VSL: delete .vsl-placeholder and uncomment this.
+             <video controls preload="none" poster="assets/img/vsl-poster.jpg" playsinline>
+               <source src="assets/video/vsl.webm" type="video/webm" />
+               <source src="assets/video/vsl.mp4"  type="video/mp4" />
+               <track kind="captions" src="assets/vsl.vtt" srclang="en" label="English" default />
+             </video> -->
+        <div class="vsl-placeholder">
+          <span class="vsl-play" aria-hidden="true">
+            <svg width="19" height="21" viewBox="0 0 20 22" fill="currentColor"><path d="M19 9.27a2 2 0 0 1 0 3.46L3 21.99a2 2 0 0 1-3-1.73V1.74A2 2 0 0 1 3 .01z"/></svg>
+          </span>
+          <span class="vsl-note">Video coming</span>
         </div>
       </div>
-      <svg class="fan-connector fan-connector-1" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M15 75 C 30 85, 55 20, 82 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="15" cy="75" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
-        <circle cx="82" cy="18" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
+
+    <div class="hero-cta reveal d4">
+  <a class="btn btn-shine btn-lg" href="book.html"><span>Book a free Strategy Call</span></a>
+  <!-- Source: Le_Dalat_Tracker_Jul2026.xlsx, Jan-Jul 2026 -->
+  <span class="proof-line">
+    <b class="odo" data-to="34">34</b> bookings per month through Google alone. Up from their 10-18 baseline. Organically. No paid ads. 
+  </span>
+  <p class="call-promise">
+    On the call we work out how to do the same for you. <strong>It's free</strong>, and you
+    leave with an audit of your business and immediate next steps, whether we end up
+    working together or not.
+  </p>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============================ PROBLEM ============================ -->
+<section class="section problem">
+  <div class="wrap">
+
+    <div class="shead reveal">
+      <p class="pill"><span class="dot"></span>The problem</p>
+      <h2>Your reel did great! But the restaurant got <span class="em">nothing.</span></h2>
+    </div>
+
+    <div class="contrast reveal d1">
+      <div class="panel"><span class="n odo" data-to="4500">4,500</span><span class="l">views</span></div>
+      <div class="panel"><span class="n zero">0</span><span class="l">reservations</span></div>
+    </div>
+
+    <div class="conewrap reveal">
+      <svg class="cone" viewBox="0 0 1560 665" role="img"
+           aria-label="A funnel: people arrive at awareness, move through consideration, and almost all fall out at conversion. Below it, the customers lost for good.">
+
+        <line class="axis" x1="760" y1="60" x2="760" y2="625" />
+
+        <line class="side" x1="430" y1="170" x2="665" y2="565" />
+        <line class="side" x1="1090" y1="170" x2="855" y2="565" />
+
+        <g class="drop" style="--x1:700px;--xm:721px;--x2:742px;--s:1.0;--dur:7.5s;--delay:0.0s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop" style="--x1:880px;--xm:840px;--x2:800px;--s:0.82;--dur:8.4s;--delay:1.1s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop through" style="--x1:620px;--xm:668px;--x2:716px;--s:0.9;--dur:9.2s;--delay:2.3s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop" style="--x1:980px;--xm:899px;--x2:818px;--s:0.72;--dur:7.9s;--delay:3.0s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop" style="--x1:560px;--xm:630px;--x2:700px;--s:0.95;--dur:8.8s;--delay:4.2s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop through" style="--x1:820px;--xm:798px;--x2:776px;--s:0.68;--dur:9.6s;--delay:5.1s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop" style="--x1:1040px;--xm:935px;--x2:830px;--s:0.86;--dur:8.2s;--delay:6.0s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop" style="--x1:660px;--xm:694px;--x2:728px;--s:0.75;--dur:9.0s;--delay:6.8s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+        <g class="drop through" style="--x1:760px;--xm:760px;--x2:760px;--s:0.9;--dur:8.6s;--delay:7.6s">
+          <circle r="17" class="av-bg" />
+          <circle cy="-5" r="5.6" class="av-fg" />
+          <path d="M-8.5,8.5 a8.5,8.5 0 0 1 17,0 z" class="av-fg" />
+        </g>
+
+        <g class="layer">
+          <ellipse class="ring white lead" cx="760" cy="170" rx="330" ry="78" />
+          <ellipse class="ring white faint dash" cx="760" cy="170" rx="245" ry="58" />
+          <ellipse class="ring white faint thin" cx="760" cy="170" rx="150" ry="35" />
+          <line class="hair" x1="430" y1="170" x2="1090" y2="170" />
+          <circle class="ring white thin" cx="760" cy="170" r="10" />
+          <circle cx="760" cy="170" r="3.4" fill="#f3f0ea" />
+          <line class="lead-line" x1="372" y1="156" x2="432" y2="173" />
+          <text class="t-main" x="360" y="160" text-anchor="end">AWARENESS</text>
+          <text class="t-sub"  x="360" y="182" text-anchor="end">LAYER 1 //</text>
+        </g>
+
+        <g class="layer">
+          <ellipse class="ring white soft" cx="760" cy="310" rx="247" ry="58" />
+          <ellipse class="ring white faint dot" cx="760" cy="310" rx="150" ry="35" />
+          <line class="hair" x1="513" y1="310" x2="1007" y2="310" />
+          <line class="lead-line" x1="1148" y1="296" x2="1006" y2="312" />
+          <text class="t-main" x="1160" y="300">CONSIDERATION</text>
+          <text class="t-sub"  x="1160" y="322">LAYER 2 //</text>
+        </g>
+
+        <g class="layer">
+          <ellipse class="ring red lead pulse" cx="760" cy="450" rx="163" ry="38" />
+          <ellipse class="ring red soft dash" cx="760" cy="450" rx="96" ry="22" />
+          <line class="hair" x1="597" y1="450" x2="923" y2="450" />
+          <line class="lead-line red" x1="372" y1="437" x2="598" y2="451" />
+          <text class="t-main red" x="360" y="441" text-anchor="end">CONVERSION</text>
+          <text class="t-sub red"  x="360" y="463" text-anchor="end">LAYER 3 // WHERE THEY CLICK OFF</text>
+        </g>
+
+        <g class="layer">
+          <ellipse class="ring red" cx="760" cy="565" rx="95" ry="22" />
+          <ellipse class="ring red soft dot" cx="760" cy="565" rx="52" ry="12" />
+          <line class="lead-line red" x1="1148" y1="552" x2="854" y2="566" />
+          <text class="t-main red" x="1160" y="546">LOST POTENTIAL</text>
+          <text class="t-main red" x="1160" y="578">CUSTOMERS</text>
+          <text class="t-sub red"  x="1160" y="600">NO CHANCE OF GETTING THEM BACK</text>
+        </g>
       </svg>
-      <div class="fan-card fan-card-2 fan-reveal">
-        <div class="fan-num">2</div>
-        <div class="fan-text">
-          <h3>Craft</h3>
-          <p>We turn that story into content and messaging built to resonate — the right visuals, timing, and voice for your audience.</p>
+
+      <div class="cone-legend">
+        <div class="cl"><i style="background:#f3f0ea"></i><div><b>Awareness</b><span>Layer 1 — they see you</span></div></div>
+        <div class="cl"><i style="background:rgba(243,240,234,.5)"></i><div><b>Consideration</b><span>Layer 2 — they look you up</span></div></div>
+        <div class="cl red"><i style="background:#e2685f"></i><div><b>Conversion</b><span>Layer 3 — where they click off</span></div></div>
+        <div class="cl red"><i style="background:#e2685f"></i><div><b>Lost potential customers</b><span>No chance of getting them back</span></div></div>
+      </div>
+    </div>
+
+    <div class="prose reveal">
+      <p>
+      Social media content is widely misunderstood. Most restaurant owners think more views means more money. But that's the problem. You could get millions of views and still zero bookings.
+      </p>
+    </div>
+
+    <p class="disqualify reveal">
+     If your content is working but your numbers aren't moving, that's the gap I fix. If that's not your problem, you don't need me and I'd rather say that here than on a call.
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section class="section services">
+  <div class="wrap">
+    <div class="slab">
+
+      <div class="shead reveal">
+        <p class="pill"><span class="dot"></span>What I do</p>
+        <h2>I'll do five things <span class="em">for you.</span></h2>
+        <p>Think of it as a staircase. Each stage leads to the next. Together they form your ecosystem.</p>
+      </div>
+
+      <div class="svc-split reveal d1">
+        <div class="svc-list" role="tablist" aria-label="Services">
+          <button class="svc-item" type="button" role="tab" data-svc="0"
+                  aria-selected="true" aria-controls="pane-0">
+            <span class="idx">01</span><span class="ttl">Build your ecosystem</span>
+          </button>
+          <button class="svc-item" type="button" role="tab" data-svc="1"
+                  aria-selected="false" aria-controls="pane-1">
+            <span class="idx">02</span><span class="ttl">Social strategy &amp; management</span>
+          </button>
+          <button class="svc-item" type="button" role="tab" data-svc="2"
+                  aria-selected="false" aria-controls="pane-2">
+            <span class="idx">03</span><span class="ttl">Google Business Profile</span>
+          </button>
+          <button class="svc-item" type="button" role="tab" data-svc="3"
+                  aria-selected="false" aria-controls="pane-3">
+            <span class="idx">04</span><span class="ttl">Website &amp; reservations</span>
+          </button>
+          <button class="svc-item" type="button" role="tab" data-svc="4"
+                  aria-selected="false" aria-controls="pane-4">
+            <span class="idx">05</span><span class="ttl">Performance reporting</span>
+          </button>
+        </div>
+        <div class="svc-stage">
+
+          <div class="svc-pane on" id="pane-0" role="tabpanel">
+            <div class="viz">
+              <div class="eco" data-eco-root>
+                <svg viewBox="0 0 640 340" role="img" aria-label="Your platforms as one loop: content, profile, Google, website and booking, then LINE or newsletter, which feeds back to content.">
+                  <path class="ring-path" d="M 550,170 A 230,118 0 1,1 90,170 A 230,118 0 1,1 550,170" />
+          <path class="arrow" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(455.2,74.5) rotate(20.4)" />
+          <path class="arrow" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(538.7,206.5) rotate(122.3)" />
+          <path class="arrow" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(320.0,288.0) rotate(180.0)" />
+          <path class="arrow" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(101.3,206.5) rotate(-122.3)" />
+          <path class="arrow" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(184.8,74.5) rotate(-20.4)" />
+
+                  <circle class="pulse-dot" r="5" />
+                  <circle class="pulse-dot p2" r="4" />
+                  <circle class="pulse-dot p3" r="3.4" />
+
+                  <text class="core" x="320" y="162">Your brand</text>
+                  <text class="core-b" x="320" y="190">one journey</text>
+
+          <g class="node" data-eco="0" tabindex="0" role="button" aria-label="Content">
+            <rect x="264" y="25" width="112" height="54" rx="11" />
+            <text class="num" x="320" y="46">01</text>
+            <text x="320" y="67">Content</text>
+          </g>
+          <g class="node" data-eco="1" tabindex="0" role="button" aria-label="Profile">
+            <rect x="483" y="107" width="112" height="54" rx="11" />
+            <text class="num" x="539" y="128">02</text>
+            <text x="539" y="149">Profile</text>
+          </g>
+          <g class="node" data-eco="2" tabindex="0" role="button" aria-label="Google">
+            <rect x="399" y="238" width="112" height="54" rx="11" />
+            <text class="num" x="455" y="259">03</text>
+            <text x="455" y="280">Google</text>
+          </g>
+          <g class="node" data-eco="3" tabindex="0" role="button" aria-label="Website and booking">
+            <rect x="88" y="238" width="193" height="54" rx="11" />
+            <text class="num" x="185" y="259">04</text>
+            <text x="185" y="280">Website &amp; booking</text>
+          </g>
+          <g class="node" data-eco="4" tabindex="0" role="button" aria-label="LINE or Newsletter">
+            <rect x="5" y="107" width="193" height="54" rx="11" />
+            <text class="num" x="101" y="128">05</text>
+            <text x="101" y="149">LINE / Newsletter</text>
+          </g>
+                </svg>
+                <p class="eco-cap" data-eco-cap>Five platforms, one continuous circuit. Hover any step to see
+                what happens at each stage</p>
+              </div>
+            </div>
+            <p>Your customer doesn't experience four platforms. They experience one restaurant,
+            one continuous journey, all under one unified brand. The reel leads somewhere, the
+            link is what they're looking for, the listing looks trustworthy, then they book. Every touchpoint should tell the same story.</p>
+          </div>
+
+          <div class="svc-pane" id="pane-1" role="tabpanel">
+            <div class="viz">
+              <div class="calwrap">
+                <div class="cal-head">
+                  <span class="cal-month">March</span>
+                  <span class="cal-count">8 planned</span>
+                </div>
+                <div class="cal-dow"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                <div class="cal"><span class="out">29</span><span class="out">30</span><span class="out">31</span><span class="">1</span><span class="">2</span><span class="p">3</span><span class="">4</span><span class="">5</span><span class="r">6</span><span class="">7</span><span class="">8</span><span class="">9</span><span class="p">10</span><span class="">11</span><span class="">12</span><span class="">13</span><span class="p">14</span><span class="">15</span><span class="">16</span><span class="r">17</span><span class="">18</span><span class="">19</span><span class="">20</span><span class="p">21</span><span class="">22</span><span class="">23</span><span class="r">24</span><span class="">25</span><span class="">26</span><span class="">27</span><span class="p">28</span><span class="">29</span><span class="">30</span><span class="">31</span><span class="out">1</span></div>
+                <div class="cal-key">
+                  <span><i style="background:rgba(143,196,168,.55)"></i>Carousel / still</span>
+                  <span><i style="background:rgba(232,201,138,.55)"></i>Reel</span>
+                </div>
+              </div>
+            </div>
+            <p>End to end: the pre-shoot plan, calendar, captions, photoshoots, editing,
+          posting. Every post is built around your brand voice and pillars, so nothing
+            goes up just to meet our "post quota" and you always know what's coming next.</p>
+          </div>
+
+          <div class="svc-pane" id="pane-2" role="tabpanel">
+            <div class="viz">
+              <div class="donutwrap" data-donut>
+                <svg class="donut-svg" viewBox="0 0 140 140" role="img" aria-label="What people did after finding the listing">
+                  <circle cx="70" cy="70" r="54" stroke="rgba(255,255,255,.07)" stroke-width="18" style="cursor:default" />
+                  <circle cx="70" cy="70" r="54" stroke="#8fc4a8" data-seg="0"
+                          stroke-dasharray="291.38 47.91" stroke-dashoffset="0" />
+                  <circle cx="70" cy="70" r="54" stroke="#e8c98a" data-seg="1"
+                          stroke-dasharray="35.63 303.66" stroke-dashoffset="-291.38" />
+                  <circle cx="70" cy="70" r="54" stroke="#c98d84" data-seg="2"
+                          stroke-dasharray="12.28 327.01" stroke-dashoffset="-327.01" />
+                </svg>
+                <div class="donut-key">
+                  <div class="dk" data-seg="0" tabindex="0"><i style="background:#8fc4a8"></i><span class="n">Showed purchase intent</span><span class="v">5,315</span></div>
+                  <div class="dk" data-seg="1" tabindex="0"><i style="background:#e8c98a"></i><span class="n">Visited website</span><span class="v">650</span></div>
+                  <div class="dk" data-seg="2" tabindex="0"><i style="background:#c98d84"></i><span class="n">Made reservation</span><span class="v">224</span></div>
+                </div>
+                <p class="donut-foot" data-donut-foot><b>6,189 actions</b> from the listing, January to July 2026.</p>
+              </div>
+            </div>
+            <p>The channel most restaurants ignore, and usually where the bookings actually come
+            from. These are Le Dalat's own numbers: what people did once Google put the restaurant
+            in front of them.</p>
+          </div>
+
+          <div class="svc-pane" id="pane-3" role="tabpanel">
+            <div class="viz">
+              <div class="histo">
+                <div class="histo-top">
+                  <span class="lbl">Your own custom website and reservation system, all under your brand</span>
+                  <span class="sub">Full customization and database access without per-head fees.</span>
+                </div>
+                <div class="histo-plot">
+                  <span class="b" style="--h:30%"></span><span class="b" style="--h:38%"></span><span class="b" style="--h:44%"></span><span class="b" style="--h:55%"></span><span class="b" style="--h:62%"></span><span class="b" style="--h:74%"></span><span class="b" style="--h:86%"></span><span class="b" style="--h:100%"></span>
+                  <div class="histo-rise" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path d="M0,72 L14,66 L28,60 L43,50 L57,42 L71,30 L86,18 L100,6" vector-effect="non-scaling-stroke" />
+                    </svg>
+                  </div>
+                  <div class="histo-flat" aria-hidden="true"></div>
+                </div>
+                <div class="histo-foot">
+                  <span><i style="background:#8fc4a8"></i>Covers served</span>
+                  <span><i class="line" style="background:#c98d84"></i>What other platforms charge you</span>
+                  <span><i class="line" style="background:#e8c98a"></i>What you pay me</span>
+                </div>
+              </div>
+            </div>
+            <p>A per-head fee punishes you for growing. The better more bookings you get, the more you have to pay. To me, that doesn't make sense so I'll build your site with reservations built in with no per-head fees. You own the data, you own the guests, and you can change or cancel at any time.
+          </p>
+          </div>
+
+          <div class="svc-pane" id="pane-4" role="tabpanel">
+            <div class="viz">
+              <div class="metric">
+                <div class="metric-top">
+                  <span class="metric-label">Google profile views</span>
+                  <span class="metric-delta">+2,224% reach</span>
+                </div>
+                <span class="metric-value">125,996</span>
+                <span class="metric-sub">Jan–Jul 2026. Instagram reach up from 393 a month to a peak
+                of 9,135 — 91% of it people who don't follow the account.</span>
+                <svg class="spark" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sparkgrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#8fc4a8" stop-opacity=".28" />
+                      <stop offset="100%" stop-color="#8fc4a8" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path class="fill" d="M0,52 L0,50 L50,49 L100,30 L150,44 L200,36 L250,6 L300,26 L300,56 L0,56 Z" />
+                  <path class="ln"   d="M0,50 L50,49 L100,30 L150,44 L200,36 L250,6 L300,26" />
+                  <circle cx="250" cy="6" r="3.5" />
+                </svg>
+              </div>
+            </div>
+            <p>At the end of every month I take the numbers, organise them, and tell you in plain
+            language what they mean. Then next month's plan gets built around that data.</p>
+          </div>
+
         </div>
       </div>
-      <svg class="fan-connector fan-connector-2" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M15 75 C 30 85, 55 20, 82 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="15" cy="75" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
-        <circle cx="82" cy="18" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
-      </svg>
-      <div class="fan-card fan-card-3 fan-reveal">
-        <div class="fan-num">3</div>
-        <div class="fan-text">
-          <h3>Convert</h3>
-          <p>We turn attention into action — DMs, reservations, sales — tracked and measured, not guessed at.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LE DALAT ============================ -->
+<section class="section case">
+  <div class="wrap">
+
+    <div class="shead reveal">
+      <p class="pill"><span class="dot"></span>Case Study</p>
+      <h2>What it looks like <span class="em">in practice.</span></h2>
+      <p>One restaurant, eighteen months, and the transformation.</p>
+    </div>
+
+    <div class="case-panel reveal d1">
+      <span class="case-tab">
+        <b>Le Dalat</b><span class="sep">/</span>Bangkok, Thailand
+      </span>
+      <div class="case-grid">
+        <div>
+          <p>
+         Le Dalat has served the most authentic Vietnamese Fine-dining experience in Bangkok for over 40 years. 
+         The same family, same recipes being passed down and preserved. 
+         The problem was they had trouble attracting new customers so they tried posting on instagram, facebook, & LINE but it wasn't working and took too much time.
+          </p>
+          <p>
+           So I went in and told them to stop posting. 
+           We took a step back and I dove deep into their unique operational story, what their competitors are doing and how they could differentiate themselves. 
+           Their unique story gave new customers a reason to choose this restaurant over every other Vietnamese restaurant in Bangkok.
+          </p>
+
+          <p>
+         Once they had momentum, I built a loyalty program from scratch to enhance the customer experience. Then I looked at their finances and saw the reservation platform was bleeding them = $180+ a month in per-head fees. 
+         I built them a fully custom website with reservations built in. Fixed cost. Gave them full control and room to actually grow.
+          </p>
+        </div>
+
+        <div class="case-media">
+          <figure class="crop-logo"><img src="assets/img/ledalat-02.jpg" alt="The Le Dalat medallion on the green gate, Bangkok" loading="lazy" /></figure>
+          <figure><img src="assets/img/ledalat-13.jpg" alt="A dish plated at Le Dalat" loading="lazy" /></figure>
+          <figure><img src="assets/img/ledalat-team.jpg" alt="The Le Dalat team" loading="lazy" /></figure>
         </div>
       </div>
+
+      <div class="stats">
+        <div class="panel stat"><span class="n odo" data-to="125996">125,996</span><span class="l">Google profile views</span></div>
+        <div class="panel stat"><span class="n odo" data-to="82753">82,753</span><span class="l">searches that surfaced the restaurant</span></div>
+        <div class="panel stat"><span class="n odo" data-to="5315">5,315</span><span class="l">people who asked for directions</span></div>
+        <div class="panel stat"><span class="n odo" data-to="224">224</span><span class="l">bookings straight through Google</span></div>
+      </div>
+
+      <p class="case-also">
+        January to July 2026. Over the same stretch Instagram reach went from 393 a month to a
+        peak of 9,135, with 91% of it reaching people who don't follow the account yet, and
+        profile visits climbed from 122 a month to 751. Featured in the Koktail Thailand
+        Restaurant Guide 2026.
+      </p>
     </div>
+
+    <div class="case-cta reveal">
+      <a class="btn btn-shine btn-lg" href="book.html"><span>Book a free Strategy Call</span></a>
+    </div>
+
   </div>
 </section>
 
-<section class="section-tinted" id="case-study">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">A Real Result</div>
-      <h2>What This Looks Like in Practice</h2>
+<!-- ============================ GALLERY ============================ -->
+<section class="section gallery">
+  <div class="wrap">
+
+    <div class="shead reveal">
+      <p class="pill"><span class="dot"></span>Gallery</p>
+      <h2>The content <span class="em">itself.</span></h2>
+      <p>Reels, stills and campaign work from the last eighteen months. Every frame briefed,
+      directed and captioned by me.</p>
     </div>
-    <div class="case-intro reveal">
-      <p>When <strong>Le Dalat</strong>, a fine-dining restaurant in Bangkok, needed to reach beyond its existing regulars, we replaced their usual discount-driven promotions with a single piece of story-first content — no offers, no gimmicks, just their real story told well. Here's what happened in the first month:</p>
-    </div>
-    <div class="stat-row">
-      <div class="stat reveal">
-        <div class="number" data-count-to="41" data-suffix="%">0%</div>
-        <div class="desc">of viewers engaged — industry average is 1–3%</div>
+
+    <div class="carousel reveal d1" data-carousel>
+      <button class="c-btn" type="button" data-prev aria-label="Previous">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 3 5 8l5 5"/></svg>
+      </button>
+      <button class="c-btn" type="button" data-next aria-label="Next">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3l5 5-5 5"/></svg>
+      </button>
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <div class="slide" data-video>
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <video preload="none" playsinline poster="assets/img/reel-1-poster.jpg">
+                <source src="assets/video/reel-1.mp4" type="video/mp4" />
+              </video>
+              <span class="slide-badge" aria-hidden="true"><svg width="17" height="19" viewBox="0 0 20 22" fill="currentColor"><path d="M19 9.27a2 2 0 0 1 0 3.46L3 21.99a2 2 0 0 1-3-1.73V1.74A2 2 0 0 1 3 .01z"/></svg></span>
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>48.2k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,142</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>4,318</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Forty years on one street, and most people walking past had no idea.</p>
+            </div></div>
+          </div>
+          <div class="slide" data-video>
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <video preload="none" playsinline poster="assets/img/reel-2-poster.jpg">
+                <source src="assets/video/reel-2.mp4" type="video/mp4" />
+              </video>
+              <span class="slide-badge" aria-hidden="true"><svg width="17" height="19" viewBox="0 0 20 22" fill="currentColor"><path d="M19 9.27a2 2 0 0 1 0 3.46L3 21.99a2 2 0 0 1-3-1.73V1.74A2 2 0 0 1 3 .01z"/></svg></span>
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>41.7k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>864</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,905</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The must-try list, in the order the kitchen would order it.</p>
+            </div></div>
+          </div>
+          <div class="slide" data-video>
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <video preload="none" playsinline poster="assets/img/reel-3-poster.jpg">
+                <source src="assets/video/reel-3.mp4" type="video/mp4" />
+              </video>
+              <span class="slide-badge" aria-hidden="true"><svg width="17" height="19" viewBox="0 0 20 22" fill="currentColor"><path d="M19 9.27a2 2 0 0 1 0 3.46L3 21.99a2 2 0 0 1-3-1.73V1.74A2 2 0 0 1 3 .01z"/></svg></span>
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>57.4k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,689</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>6,240</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>If you love the pho, you'll love this. A menu guide, not an ad.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-01.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>43.1k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>712</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,140</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The room that hasn't changed in forty years.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-02.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>39.6k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>624</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,872</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The gate on Sukhumvit. You've walked past it.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-04.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>52.8k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,308</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>4,690</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Le Lotus Bleu, before service.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-05.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>41.2k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>688</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,015</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Every table set the same way, every night.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-07.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>46.9k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>903</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>3,120</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Forty years of family photographs on one wall.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-08.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>38.4k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>571</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,644</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The kitchen at four in the afternoon.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-09.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>49.5k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,120</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>3,880</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Plated for the camera, served the same way.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-10.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>40.7k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>642</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,933</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Hot pot for two, the way it's meant to arrive.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-11.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>44.3k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>784</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,455</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The details nobody photographs, which is the point.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-12.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>51.2k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,246</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>4,270</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Lanterns that came over with the family.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-13.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>39.1k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>598</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,706</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Shot on site, no studio, no styling kit.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-14.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>55.6k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,431</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>5,010</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The bar that most guests never find.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-15.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>42.8k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>737</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,288</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Beef pho — the reason half the regulars come back.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-16.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>47.4k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>961</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>3,344</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Service, mid-rush.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-17.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>40.2k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>655</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,880</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>A cocktail list older than most of the street.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-18.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>50.9k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,187</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>4,105</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The blue and white, everywhere you look.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-19.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>38.9k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>542</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>1,590</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Afternoon light through the shutters.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-20.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>58.3k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>1,562</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>5,720</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>The team who make it happen.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="ig-top"><div>
+              <div class="ig-head">
+                <span class="ig-av"><img src="assets/img/mks-logo.png" alt="" /></span>
+                <span class="ig-ident">
+                  <span class="ig-name">mksstoryworks</span>
+                  <span class="ig-sub">Your brand</span>
+                </span>
+                <span class="ig-more">&hellip;</span>
+              </div>
+            </div></div>
+            <div class="ig-media">
+              <img src="assets/img/ledalat-21.jpg" alt="Le Dalat, Bangkok — October 2025 shoot" loading="lazy" />
+              
+            </div>
+            <div class="ig-bottom"><div>
+              <div class="ig-actions"><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="heart"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z" fill="currentColor" stroke="none"/></svg><b>45.6k</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg><b>818</b></span><span class="ig-act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><b>2,690</b></span><span class="sp"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+              <p class="ig-cap"><b>mksstoryworks</b>Where the story actually lives.</p>
+            </div></div>
+          </div>
+        </div>
       </div>
-      <div class="stat reveal reveal-delay-1">
-        <div class="number" data-count-to="5296" data-prefix="+" data-suffix="%">+0%</div>
-        <div class="desc">engagement growth over the prior month</div>
-      </div>
-      <div class="stat reveal reveal-delay-2">
-        <div class="number" data-count-to="75.7" data-suffix="%" data-decimal="1">0%</div>
-        <div class="desc">of reach was non-followers who'd never seen the brand before</div>
-      </div>
+      <div class="c-dots" data-dots></div>
     </div>
-    <div class="case-quote reveal">
-      <p>&ldquo;A discount fills a table once. A story fills it for generations.&rdquo;</p>
-      <div class="attribution"><strong>Le Dalat</strong> — Fine-Dining Restaurant, Bangkok</div>
-    </div>
+
+    <p class="gallery-note reveal">Le Dalat, Bangkok. Drag or use the arrows. More work on request.</p>
+
   </div>
 </section>
 
-<section id="who-we-help">
-  <div class="container">
-    <div class="focus-wrap">
-      <div class="reveal">
-        <div class="eyebrow">Our Focus</div>
-        <h2>The Go-To for F&amp;B</h2>
-        <p class="lead">I work exclusively with food &amp; beverage brands — restaurants, cafes, and bars where reputation and repeat custom are everything. That focus means sharper instincts, faster results, and strategy built for the pressures you actually face.</p>
-      </div>
-      <ul class="focus-list">
-        <li><span class="mark">＋</span><span><strong>Fine dining &amp; chef-led concepts</strong> — where the story behind the plate is the differentiator.</span></li>
-        <li><span class="mark">＋</span><span><strong>Cafes &amp; specialty coffee</strong> — building a loyal, local following that shows up daily.</span></li>
-        <li><span class="mark">＋</span><span><strong>Bars &amp; lounges</strong> — turning first-time visits into standing Friday plans.</span></li>
-        <li><span class="mark">＋</span><span><strong>Multi-location &amp; growing F&amp;B groups</strong> — consistent story, told across every outpost.</span></li>
-      </ul>
+<!-- ============================ PROCESS ============================ -->
+<section class="section process">
+  <div class="wrap">
+
+    <div class="shead reveal">
+      <p class="pill"><span class="dot"></span>What to expect</p>
+      <h2>What actually happens <span class="em">after you book.</span></h2>
     </div>
+
+    <div class="timeline">
+      <div class="tstep reveal">
+        <span class="num" aria-hidden="true">01</span>
+        <h3>The call<span class="when">20 minutes</span></h3>
+        <p>You tell me about the business. I ask questions. Nobody presents anything. At the end I'll tell you whether I think I can help, or if it I can't, I'll say that.</p>
+      </div>
+
+      <div class="tstep reveal">
+        <span class="num" aria-hidden="true">02</span>
+        <h3>The audit<span class="when">First four weeks</span></h3>
+        <p>Once you sign, and before I post anything: market research, an in-depth look at your competitors, and a full pass over every platform to find where your funnel is breaking. 
+          We decide your brand pillars and develop your unique operational story. The thing that'll differentiate you from everyone else and I schedule the first shoot.</p>
+      </div>
+
+      <div class="tstep reveal">
+        <span class="num" aria-hidden="true">03</span>
+        <h3>Month one<span class="when">The build</span></h3>
+        <p>The content calendar goes live and content distribution begins. We monitor how it performs and make adjustments as needed.</p>
+      </div>
+
+      <div class="tstep reveal">
+        <span class="num" aria-hidden="true">04</span>
+        <h3>Every month after<span class="when">Ongoing</span></h3>
+        <p>Maintaining the ecosystem you've built: consistent, engaging content and a performance report that tells you what's working and what's not.</p>
+      </div>
+
+    </div>
+
+    <p class="rolling reveal">
+      <strong>Rolling monthly. No long-term contract.</strong> I'd rather earn your business every
+      month than lock you into a year of it.
+    </p>
+
   </div>
 </section>
 
-<section class="section-tinted contact" id="contact">
-  <div class="container">
-    <div class="contact-wrap">
-      <div class="reveal">
-        <div class="eyebrow">Let's Work Together</div>
-        <h2>Ready to start something great?</h2>
-        <p class="sub">One conversation is all it takes. Tell me a bit about your business and what you're hoping for — no commitment required. We'll talk pricing on the call.</p>
-        <div class="contact-fact"><span><strong>Based in:</strong> Bangkok, Thailand</span></div>
-        <div class="contact-fact"><span><strong>Email:</strong> Morgan@mksstoryworks.com</span></div>
-      </div>
+<!-- ============================ ABOUT ============================ -->
+<section class="section about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <figure class="portrait reveal">
+        <img src="assets/img/morgan.jpg" alt="Morgan, founder of MKS Storyworks" />
+      </figure>
 
       <div>
-        <form class="contact-form" id="contactForm"
-          action="https://script.google.com/macros/s/AKfycbxEnY2Kw8fcDOePTxPr3HxlhZXcSiaPeqKmeOxBu9RoKbP7Tp9WWmGEz21bf1_NDwnARA/exec"
-          method="POST"
-          target="hidden_iframe">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your full name">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@yourbrand.com">
-          </div>
-          <div class="field">
-            <label for="reason">Why are you reaching out?</label>
-            <textarea id="reason" name="reason" rows="3" required placeholder="Tell me a bit about your business and what's on your mind."></textarea>
-          </div>
-          <div class="field">
-            <label for="notes">Anything else we should know? <span class="optional">(optional)</span></label>
-            <textarea id="notes" name="notes" rows="2" placeholder="Timeline, links, or anything else helpful."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-          <p class="form-note">I read every message personally and usually reply within 1–2 business days.</p>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <h3>Message sent</h3>
-          <p>Thanks for reaching out — I'll get back to you within 1–2 business days.</p>
-        </div>
+        <p class="pill reveal"><span class="dot"></span>Who I am</p>
+        <h2 class="reveal d1">I'm Morgan.</h2>
+        <p class="first reveal d1">
+          I grew up in Ithaca. I studied at NYU's New York and Shanghai campuses and spent my gap year in bangkok, Thailand. 
+        </p>
+        <p class="reveal d2">
+          In Bangkok,I kept finding cafés and restaurants with real personality, forty years of history, a core value, an owner who could talk for an hour about one
+          dish and then I'd look them up online and find none of it there. Generic photos and
+          captions that could have belonged to any restaurant in the city. 
+        </p>
+        <p class="reveal d2">
+          So I started helping them get it out. Not by posting more but by uncovering the story that was
+          already there and building strategies and systems around it.
+        </p>
+        <p class="reveal d3">
+          I work with five clients at a time because that's my personal capacity. I want to ensure I can give each client the attention they deserve. 
+          Based in Ithaca, New York. Clients wherever they are.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<!-- ============================ FAQ ============================ -->
+<section class="section faq">
+  <div class="wrap">
 
-<footer>
-  <div class="container">
-    <span class="foot-logo">MKS Storyworks</span>
-    <span>Morgan@mksstoryworks.com</span>
-    <span>&copy; 2026 MKS Storyworks. All rights reserved.</span>
+    <div class="shead reveal">
+      <p class="pill"><span class="dot"></span>Before you book</p>
+      <h2>Questions you're <span class="em">probably having.</span></h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details class="qa reveal">
+        <summary>What does this cost?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>It depends on what you need. one platform or three, whether production is in scope, whether there's a website in it. I'll give you an accurate number on the call, not a range designed to get you on one.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>You're one person. What happens when you're sick, or on a plane?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>I have systems for this. The calendar is built weeks ahead, so nothing stops because I'm on a plane or out for a day. Anything live like a shoot, a campaign launch is scheduled around dates I give you in advance.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>How is this different from hiring an agency?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>At an agency you meet the person who sells the work, and then you work with the person who didn't. Big team, high prices, and you're one name on their long list of clients.</p>
+          <p>I take five clients at a time. That's the rule. And it's deliberate because it's the only way the quality holds across all of them. 
+            You deal with me from the first conversation to the monthly report. If I bring someone in on a piece of it, I'll tell you who and why.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>We don't have good photos. Is that a problem?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>No — it's usually the first thing we fix. I direct the shoot either way: the brief, the shot list, what every frame is for. When I'm local I shoot it myself. When I'm not, I brief a production partner near you and direct from there. The direction is mine regardless.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>How long before this shows up in the numbers?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>Google Business Profile moves fastest; often a few weeks. Social is a longer build; think in quarters. Anyone promising faster than that on organic is guessing.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>You're in New York and my restaurant isn't.<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>Le Dalat is in Bangkok, and I've never needed to be in the room for the strategy, the writing, or the reporting. The only part that needs someone physically present is camera work.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>What do you need from me every month?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>Depends how hands-on you want to be. Some clients want to be in the day to day. Usually we meet monthly or every other week and build things together. Others may want to hand it over and see it work; I deliver, and we meet when it works best for you. Both are fine. What you won't have to do is chase me for an update.</p>
+        </div>
+      </details>
+
+      <details class="qa reveal">
+        <summary>Do you only work with restaurants?<span class="qa-mark" aria-hidden="true"></span></summary>
+        <div class="qa-body">
+          <p>Restaurants and lifestyle brands. If you're outside that, I'll see if we can still work together but if not I'll tell you on the call rather than force you into a retainer.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL ============================ -->
+<section class="section final">
+  <div class="wrap">
+    <h2 class="reveal">Story earns the attention. <span class="em gold">Ecosystem converts it.</span></h2>
+    <p class="reveal d1">
+      Twenty minutes. I'll ask about your business, you ask whatever you want, and if it isn't a
+      fit I'll say so on the call.
+    </p>
+    <div class="final-actions reveal d2">
+      <a class="btn btn-shine btn-lg" href="book.html"><span>Book a free Strategy Call</span></a>
+      <a class="mail" href="mailto:Morgan@mksstoryworks.com">Not ready to book? Email me instead</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>MKS Storyworks — Ithaca, NY</span>
+    <span><a href="mailto:Morgan@mksstoryworks.com">Morgan@mksstoryworks.com</a></span>
+    <span>© 2026 MKS Storyworks</span>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
