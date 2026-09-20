@@ -1,381 +1,252 @@
-/* MKS Storyworks — v4
-   Two jobs: reveal-on-scroll, and a border on the nav once it lifts off the hero. */
-
+/* =========================================================================
+   MKS Storyworks, V5
+   Four small behaviours. Nothing here is required for the page to read.
+   ========================================================================= */
 (function () {
   'use strict';
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = window.matchMedia &&
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* --- reveal on scroll ------------------------------------------------ */
-  var items = document.querySelectorAll('.reveal');
-
-  if (reduced || !('IntersectionObserver' in window)) {
-    items.forEach(function (el) { el.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-    items.forEach(function (el) { io.observe(el); });
-
-    /* Anything already in view on load reveals immediately — no blank hero. */
-    requestAnimationFrame(function () {
-      items.forEach(function (el) {
-        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
-      });
-    });
-  }
-
-  /* --- hero video: the flip ---------------------------------------------
-     Deliberately not relying on IntersectionObserver's initial callback —
-     a plain visibility check on load and on scroll is deterministic.
-     Tall screen: the video is already partly in view, so it lands just after
-     the headline. Short screen or phone: it starts below the fold and lands
-     as you scroll to it. */
-  var tilt = document.querySelector('.vsl.tilt');
-  if (tilt) {
-    if (reduced) {
-      tilt.classList.add('landed');
-    } else {
-      var done = false;
-      var firstRun = true;
-
-      var visibleEnough = function () {
-        var r = tilt.getBoundingClientRect();
-        if (!r.height) return false;
-        var shown = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
-        return shown / r.height >= 0.3;
-      };
-
-      var check = function () {
-        if (done) return;
-        if (!visibleEnough()) { firstRun = false; return; }
-        done = true;
-        var delay = firstRun ? 620 : 0;   // in view at load -> let the headline land first
-        window.setTimeout(function () { tilt.classList.add('landed'); }, delay);
-        window.removeEventListener('scroll', check);
-        window.removeEventListener('resize', check);
-      };
-
-      window.addEventListener('scroll', check, { passive: true });
-      window.addEventListener('resize', check);
-      requestAnimationFrame(check);
-    }
-  }
-
-  /* --- gallery carousel: coverflow, looping -------------------------------
-     Clones a handful of slides onto each end so there is always something
-     either side, then snaps silently back into the real range at the seam.
-     Video clones become their poster image — cheap, and identical while idle. */
-  document.querySelectorAll('[data-carousel]').forEach(function (root) {
-    var track = root.querySelector('.carousel-track');
-    var view  = root.querySelector('.carousel-viewport');
-    var prev  = root.querySelector('[data-prev]');
-    var next  = root.querySelector('[data-next]');
-    var dotBox = root.querySelector('[data-dots]');
-    if (!track) return;
-
-    var real = Array.prototype.slice.call(track.querySelectorAll('.slide'));
-    var N = real.length;
-    if (!N) return;
-
-    var K = Math.min(5, N);          /* clones per side */
-
-    var makeClone = function (src) {
-      var c = src.cloneNode(true);          /* keep the post chrome */
-      var vid = c.querySelector('video');
-      if (vid) {                            /* but not a second video element */
-        var img = document.createElement('img');
-        img.src = vid.getAttribute('poster');
-        img.alt = '';
-        img.loading = 'lazy';
-        vid.parentNode.replaceChild(img, vid);
-        var b = c.querySelector('.slide-badge');
-        if (b) b.remove();
-      }
-      c.setAttribute('aria-hidden', 'true');
-      c.dataset.clone = '1';
-      return c;
-    };
-
-    for (var i = 0; i < K; i++) {
-      track.appendChild(makeClone(real[i % N]));                  /* tail */
-      track.insertBefore(makeClone(real[(N - 1 - i) % N]), track.firstChild); /* head */
-    }
-
-    var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
-    slides.forEach(function (s, i) { s.dataset.i = i; });
-
-    var FIRST = K;                   /* index of real slide 0 */
-    var index = FIRST;
-
-    var realIndexOf = function (i) { return ((i - FIRST) % N + N) % N; };
-
-    var paint = function (dragPx, animate) {
-      track.style.transition = animate === false ? 'none' : '';
-      var s = slides[index];
-      if (!s) return;
-      var centre = view.getBoundingClientRect().width / 2;
-      var x = centre - (s.offsetLeft + s.offsetWidth / 2) + (dragPx || 0);
-      track.style.transform = 'translateX(' + x + 'px)';
-      slides.forEach(function (el, i) {
-        el.setAttribute('data-d', Math.min(3, Math.abs(i - index)));
-      });
-      var r = realIndexOf(index);
-      dots.forEach(function (d, i) { d.classList.toggle('on', i === r); });
-    };
-
-    /* jump back into the real range without showing the move */
-    var reseat = function () {
-      if (index >= FIRST && index < FIRST + N) return;
-      index = index < FIRST ? index + N : index - N;
-      paint(0, false);
-      void track.offsetWidth;        /* flush, so the next move animates */
-      track.style.transition = '';
-    };
-    track.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'transform') reseat();
-    });
-
-    var go = function (i) {
-      var cur = slides[index] && slides[index].querySelector('video');
-      if (cur && !cur.paused) cur.pause();
-      index = i;
-      paint();
-    };
-
-    var dots = [];
-    if (dotBox) {
-      dotBox.innerHTML = '';
-      real.forEach(function (_, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'c-dot';
-        b.setAttribute('aria-label', 'Go to item ' + (i + 1));
-        b.addEventListener('click', function () { go(FIRST + i); });
-        dotBox.appendChild(b);
-        dots.push(b);
-      });
-    }
-
-    if (prev) prev.addEventListener('click', function () { go(index - 1); });
-    if (next) next.addEventListener('click', function () { go(index + 1); });
-    root.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft')  go(index - 1);
-      if (e.key === 'ArrowRight') go(index + 1);
-    });
-
-    var down = null, moved = 0;
-    track.addEventListener('pointerdown', function (e) { down = e.clientX; moved = 0; });
-    window.addEventListener('pointermove', function (e) {
-      if (down === null) return;
-      moved = e.clientX - down;
-      paint(moved, false);
-    });
-    window.addEventListener('pointerup', function () {
-      if (down === null) return;
-      track.style.transition = '';
-      var w = slides[index] ? slides[index].offsetWidth : 300;
-      if (moved < -w * 0.18) go(index + 1);
-      else if (moved > w * 0.18) go(index - 1);
-      else paint();
-      down = null;
-    });
-
-    slides.forEach(function (slide, i) {
-      var vid = slide.querySelector('video');
-      slide.addEventListener('click', function () {
-        if (Math.abs(moved) > 6) return;
-        if (i !== index) { go(i); return; }
-        if (vid && vid.paused) { vid.controls = true; vid.play(); }
-      });
-      if (!vid) return;
-      vid.addEventListener('play',  function () { slide.classList.add('playing'); });
-      vid.addEventListener('pause', function () { slide.classList.remove('playing'); });
-      vid.addEventListener('ended', function () {
-        slide.classList.remove('playing');
-        vid.controls = false;
-        vid.load();
-      });
-    });
-
-    paint(0, false);
-    window.addEventListener('resize', function () { paint(0, false); });
-    window.addEventListener('load',   function () { paint(0, false); });
-  });
-
-  /* --- the leak funnel fills on arrival ------------------------------------ */
-  (function () {
-    var f = document.querySelector('.funnel');
-    if (!f) return;
-    if (reduced || !('IntersectionObserver' in window)) { f.classList.add('go'); return; }
-    var fio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { f.classList.add('go'); fio.unobserve(e.target); } });
-    }, { threshold: 0.3 });
-    fio.observe(f);
-  })();
-
-  /* --- the cone only animates while you can see it ------------------------ */
-  (function () {
-    var cone = document.querySelector('.conewrap');
-    if (!cone) return;
-    if (reduced) return;
-    if (!('IntersectionObserver' in window)) { cone.classList.add('running'); return; }
-    var cio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { cone.classList.toggle('running', e.isIntersecting); });
-    }, { threshold: 0.15 });
-    cio.observe(cone);
-  })();
-
-  /* --- ecosystem circuit: each node explains its handoff -------------------- */
-  document.querySelectorAll('[data-eco-root]').forEach(function (root) {
-    var cap  = root.querySelector('[data-eco-cap]');
-    var base = cap ? cap.innerHTML : '';
-    var copy = [
-      'They see you — reels, posts, the story you actually have.',
-      'They check you out — bio, highlights, and a link worth tapping.',
-      'They verify you — hours, photos and reviews that match reality.',
-      'They book — on your system, with the guest data staying yours.',
-      'You reach them again — which is where the next visit starts.'
-    ];
-    root.querySelectorAll('.node').forEach(function (n, i) {
-      var show = function () {
-        if (cap) cap.innerHTML = '<b>0' + (i + 1) + '</b> &nbsp;' + copy[i];
-      };
-      var clear = function () { if (cap) cap.innerHTML = base; };
-      n.addEventListener('mouseenter', show);
-      n.addEventListener('focus', show);
-      n.addEventListener('mouseleave', clear);
-      n.addEventListener('blur', clear);
-    });
-  });
-
-  /* --- donut: hover or focus a slice / legend row to isolate it ----------- */
-  document.querySelectorAll('[data-donut]').forEach(function (root) {
-    var segs = Array.prototype.slice.call(root.querySelectorAll('circle[data-seg]'));
-    var rows = Array.prototype.slice.call(root.querySelectorAll('.dk'));
-    var foot = root.querySelector('[data-donut-foot]');
-    var base = foot ? foot.innerHTML : '';
-    var pct  = ['85.9%', '10.5%', '3.6%'];
-
-    var show = function (i) {
-      segs.forEach(function (s, n) {
-        s.classList.toggle('up',  n === i);
-        s.classList.toggle('dim', i !== null && n !== i);
-      });
-      rows.forEach(function (r, n) { r.classList.toggle('on', n === i); });
-      if (!foot) return;
-      if (i === null) { foot.innerHTML = base; return; }
-      var name = rows[i].querySelector('.n').textContent;
-      var val  = rows[i].querySelector('.v').textContent;
-      foot.innerHTML = '<b>' + val + '</b> ' + name.toLowerCase() + ' — ' + pct[i] + ' of everything they did.';
-    };
-
-    var bind = function (el, i) {
-      el.addEventListener('mouseenter', function () { show(i); });
-      el.addEventListener('focus',      function () { show(i); });
-      el.addEventListener('mouseleave', function () { show(null); });
-      el.addEventListener('blur',       function () { show(null); });
-    };
-    segs.forEach(bind);
-    rows.forEach(bind);
-  });
-
-  /* --- services: list selects the visual ---------------------------------- */
-  (function () {
-    var tabs  = Array.prototype.slice.call(document.querySelectorAll('.svc-item'));
-    var panes = Array.prototype.slice.call(document.querySelectorAll('.svc-pane'));
-    if (!tabs.length) return;
-
-    var select = function (i) {
-      tabs.forEach(function (t, n) { t.setAttribute('aria-selected', n === i ? 'true' : 'false'); });
-      panes.forEach(function (p, n) { p.classList.toggle('on', n === i); });
-    };
-
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { select(i); });
-      tab.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-          e.preventDefault();
-          var n = (i + 1) % tabs.length; tabs[n].focus(); select(n);
-        }
-        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          var p = (i - 1 + tabs.length) % tabs.length; tabs[p].focus(); select(p);
-        }
-      });
-    });
-  })();
-
-  /* --- odometers ----------------------------------------------------------
-     Count up once, when the number arrives on screen. */
-  (function () {
-    var odos = Array.prototype.slice.call(document.querySelectorAll('.odo'));
-    if (!odos.length) return;
-
-    var group = function (n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
-
-    var run = function (el) {
-      if (el.dataset.done) return;
-      el.dataset.done = '1';
-      var target = parseFloat(el.dataset.to || '0');
-      if (reduced || !target) { el.textContent = group(target); return; }
-
-      var dur = 1500, t0 = null;
-      var tick = function (ts) {
-        if (t0 === null) t0 = ts;
-        var p = Math.min(1, (ts - t0) / dur);
-        var eased = 1 - Math.pow(1 - p, 3);          /* ease-out cubic */
-        el.textContent = group(Math.round(target * eased));
-        if (p < 1) requestAnimationFrame(tick);
-        else el.textContent = group(target);
-      };
-      el.textContent = '0';
-      requestAnimationFrame(tick);
-    };
-
-    if (reduced || !('IntersectionObserver' in window)) {
-      odos.forEach(run);
-      return;
-    }
-    var oio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { run(entry.target); oio.unobserve(entry.target); }
-      });
-    }, { threshold: 0.35 });
-    odos.forEach(function (el) { oio.observe(el); });
-  })();
-
-  /* --- safety net --------------------------------------------------------
-     If the browser never delivers a frame (background tab, throttled renderer,
-     an observer that misbehaves), nothing should stay invisible. */
-  window.setTimeout(function () {
-    document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
-      el.classList.add('in');
-    });
-    var v = document.querySelector('.vsl.tilt:not(.landed)');
-    if (v) v.classList.add('landed');
-    var fn = document.querySelector('.funnel:not(.go)');
-    if (fn) fn.classList.add('go');
-    document.querySelectorAll('.odo:not([data-done])').forEach(function (el) {
-      el.dataset.done = '1';
-      var n = parseFloat(el.dataset.to || '0');
-      el.textContent = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    });
-  }, 2600);
-
-  /* --- nav border once scrolled ---------------------------------------- */
+  /* ------------------------------------------------------------- nav -- */
   var nav = document.getElementById('nav');
   if (nav) {
     var onScroll = function () {
-      nav.classList.toggle('is-stuck', window.scrollY > 12);
+      nav.classList.toggle('stuck', window.scrollY > 24);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  /* ---------------------------------------------------------- reveal -- */
+  var reveals = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window) || reduce) {
+    for (var i = 0; i < reveals.length; i++) reveals[i].classList.add('in');
+  } else {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        revObs.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    reveals.forEach(function (el, n) {
+      /* Stagger only within a group of siblings, so a list cascades but
+         two distant sections never wait on each other. */
+      var sibs = el.parentNode ? el.parentNode.children : null;
+      var idx = 0;
+      if (sibs) for (var k = 0; k < sibs.length; k++) { if (sibs[k] === el) { idx = k; break; } }
+      el.style.transitionDelay = Math.min(idx, 5) * 70 + 'ms';
+      revObs.observe(el);
+    });
+  }
+
+  /* -------------------------------------------------------- counters --
+     Count up once, when the stat band first comes into view.            */
+  var odos = document.querySelectorAll('.odo');
+
+  var runOdo = function (el) {
+    var to = parseFloat(el.getAttribute('data-to'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(to)) return;
+
+    var dur = 1500, t0 = null;
+    var step = function (t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * eased).toLocaleString('en-US') + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  if (odos.length) {
+    if (!('IntersectionObserver' in window) || reduce) {
+      /* leave the served markup in place: it already shows the number */
+    } else {
+      var odoObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          runOdo(e.target);
+          odoObs.unobserve(e.target);
+        });
+      }, { threshold: 0.5 });
+      odos.forEach(function (el) {
+        el.textContent = '0' + (el.getAttribute('data-suffix') || '');
+        odoObs.observe(el);
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------- faq --
+     One open at a time. Height is animated by CSS (0fr -> 1fr), so there
+     is nothing to measure here.                                        */
+  var qs = document.querySelectorAll('.qa .q');
+
+  qs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var qa = btn.closest('.qa');
+      var isOpen = qa.classList.contains('open');
+
+      document.querySelectorAll('.qa.open').forEach(function (other) {
+        other.classList.remove('open');
+        var b = other.querySelector('.q');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        qa.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ------------------------------------------------- gallery: tabs --
+     Two rails behind one set of arrows. The arrows always drive
+     whichever pane is showing.                                      */
+  var tabs     = document.querySelectorAll('.tab');
+  var tabsWrap = document.querySelector('.tabs');
+  var panes    = document.querySelectorAll('.pane');
+  var railBtns = document.querySelectorAll('.rail-btn');
+
+  var activeRail = function () {
+    var pane = document.querySelector('.pane.on');
+    return pane ? pane.querySelector('[data-rail]') : null;
+  };
+
+  var syncBtns = function () {
+    var rail = activeRail();
+    if (!rail) return;
+    var max = rail.scrollWidth - rail.clientWidth - 2;
+    railBtns.forEach(function (b) {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      b.disabled = dir < 0 ? rail.scrollLeft <= 2 : rail.scrollLeft >= max;
+    });
+  };
+
+  /* The Videos pane starts hidden, but a <video poster> still downloads its
+     poster even inside display:none. Five reel posters is ~585KB of first
+     paint for a tab nobody has opened yet, so the posters are held in
+     data-poster and attached the first time the tab is shown. */
+  var armPosters = function (pane) {
+    if (!pane) return;
+    pane.querySelectorAll('video[data-poster]').forEach(function (v) {
+      v.poster = v.getAttribute('data-poster');
+      v.removeAttribute('data-poster');
+    });
+  };
+
+  var stopAllVideos = function () {
+    document.querySelectorAll('.clip video').forEach(function (v) {
+      v.pause();
+      v.controls = false;
+      if (v.parentNode) v.parentNode.classList.remove('playing');
+    });
+  };
+
+  tabs.forEach(function (tab, idx) {
+    tab.addEventListener('click', function () {
+      if (tab.classList.contains('on')) return;
+      stopAllVideos();
+
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      if (tabsWrap) tabsWrap.setAttribute('data-active', idx);
+
+      var want = 'pane-' + tab.getAttribute('data-pane');
+      panes.forEach(function (pn) { pn.classList.toggle('on', pn.id === want); });
+      armPosters(document.getElementById(want));
+
+      var rail = activeRail();
+      if (rail) rail.scrollLeft = 0;
+      syncBtns();
+    });
+  });
+
+  railBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var rail = activeRail();
+      if (!rail) return;
+      var dir  = parseInt(b.getAttribute('data-dir'), 10);
+      var card = rail.querySelector('.shot, .clip');
+      var step = card ? card.getBoundingClientRect().width + 14 : 260;
+      /* a screenful at a time, but never less than one card */
+      var page = Math.max(step, Math.floor(rail.clientWidth / step) * step);
+      rail.scrollBy({ left: dir * page, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  armPosters(document.querySelector('.pane.on'));
+
+  /* Any deferred poster outside a tabbed pane gets attached once it is
+     close to the viewport, so a clip near the foot of a long page does
+     not cost anything at first paint. */
+  var loosePosters = document.querySelectorAll('video[data-poster]:not(.pane video)');
+  if (loosePosters.length) {
+    if (!('IntersectionObserver' in window)) {
+      loosePosters.forEach(function (v) {
+        v.poster = v.getAttribute('data-poster');
+        v.removeAttribute('data-poster');
+      });
+    } else {
+      var posterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.poster = e.target.getAttribute('data-poster');
+          e.target.removeAttribute('data-poster');
+          posterObs.unobserve(e.target);
+        });
+      }, { rootMargin: '400px 0px' });
+      loosePosters.forEach(function (v) { posterObs.observe(v); });
+    }
+  }
+
+  document.querySelectorAll('[data-rail]').forEach(function (r) {
+    r.addEventListener('scroll', syncBtns, { passive: true });
+  });
+  window.addEventListener('resize', syncBtns);
+  syncBtns();
+
+  /* ----------------------------------------------- gallery: reels --
+     Poster until asked. One plays at a time, and the native controls
+     only appear once there is something to control.                 */
+  document.querySelectorAll('.clip-play').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var clip = btn.closest('.clip');
+      var vid  = clip ? clip.querySelector('video') : null;
+      if (!vid) return;
+
+      stopAllVideos();
+      clip.classList.add('playing');
+      vid.controls = true;
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {
+        /* autoplay policy or a missing file: hand the frame back */
+        clip.classList.remove('playing');
+        vid.controls = false;
+      });
+    });
+  });
+
+  document.querySelectorAll('.clip video').forEach(function (v) {
+    v.addEventListener('ended', function () {
+      v.controls = false;
+      if (v.parentNode) v.parentNode.classList.remove('playing');
+    });
+  });
+
+  /* --------------------------------------------------------- safety --
+     If anything above threw, nothing should stay invisible.            */
+  setTimeout(function () {
+    document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }, 2600);
 })();

@@ -1,6 +1,0 @@
-Drop the VSL here as vsl.mp4 (and vsl.webm if you export one).
-Then in index.html: delete the .vsl-placeholder div and uncomment the <video> block above it.
-Poster frame goes in ../img/vsl-poster.jpg.
-
-The old Le Dalat reels were removed from this folder — they aren't used on v3 and were
-30MB of dead weight in the deploy. Originals are still in "MKS Website V2/site/assets/video".

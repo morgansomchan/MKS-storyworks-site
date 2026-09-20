@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Watch this first · MKS Storyworks</title>
+<meta name="description" content="Four minutes on why posting more isn't working, and what I'd look at first in your business." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.className += ' js';</script>
+</head>
+<body class="page-vsl">
+
+<header class="nav stuck" id="nav">
+  <div class="wrap nav-in">
+    <a class="mark" href="index.html">MKS Storyworks</a>
+    <a class="nav-cta" href="book.html">Let's get started!</a>
+  </div>
+</header>
+
+<main class="stage">
+  <div class="wrap stage-in">
+
+    <p class="eyebrow">Step one of two</p>
+    <h1 class="stage-h">Watch this before we talk.</h1>
+    <p class="stage-sub">
+      Four minutes on why posting more isn't working, and what I'd look at first in your business.
+    </p>
+
+    <!-- ============================================================
+         THE VSL.
+         To go live: drop the file at assets/video/vsl.mp4 and a still
+         frame at assets/img/vsl-poster.jpg. Nothing else changes.
+         The stand-in below hides itself once the video loads.
+    ============================================================= -->
+    <div class="vsl" id="vsl">
+      <video id="vslVideo" controls playsinline preload="metadata"
+             poster="assets/img/vsl-poster.jpg">
+        <source src="assets/video/vsl.mp4" type="video/mp4" />
+      </video>
+      <div class="vsl-standin">
+        <span>Your VSL goes here</span>
+        <p>assets/video/vsl.mp4</p>
+      </div>
+    </div>
+
+    <div class="stage-cta">
+      <a class="btn" href="book.html">
+        <span class="btn-label">Let's get started!</span>
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 8h10M8.8 4.2 12.6 8l-3.8 3.8"/></svg>
+        </span>
+      </a>
+      <p class="btn-note">Whether we work together or not, you'll leave with immediate next steps.</p>
+    </div>
+
+  </div>
+
+  <section class="proof-band">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><span class="stat-n">125,996</span><span class="stat-l">Google profile views</span></div>
+        <div class="stat"><span class="stat-n">5,315</span><span class="stat-l">Asked for directions</span></div>
+        <div class="stat"><span class="stat-n">224</span><span class="stat-l">Bookings through Google</span></div>
+        <div class="stat"><span class="stat-n">91%</span><span class="stat-l">Reach to non-followers</span></div>
+      </div>
+      <p class="stats-note">Le&nbsp;Dalat Vietnamese Fine Dining, Bangkok · January–July 2026.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="mark" href="index.html">MKS Storyworks</a>
+    <span class="foot-r">Ithaca, New York · <a href="mailto:Morgan@mksstoryworks.com">Morgan@mksstoryworks.com</a></span>
+  </div>
+  <div class="wrap"><p class="legal">© MKS Storyworks Ltd. Liability Company 2026</p></div>
+</footer>
+
+<script>
+/* Show the stand-in only while there is genuinely no playable file. */
+(function () {
+  var v = document.getElementById('vslVideo');
+  var box = document.getElementById('vsl');
+  if (!v || !box) return;
+  var fail = function () { box.classList.add('no-vid'); };
+  v.addEventListener('error', fail, true);
+  setTimeout(function () {
+    /* NETWORK_NO_SOURCE: the browser gave up finding a source */
+    if (v.networkState === 3 || v.error) fail();
+  }, 1200);
+})();
+</script>
+</body>
+</html>
