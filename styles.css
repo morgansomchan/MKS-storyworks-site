@@ -1015,3 +1015,23 @@ img,svg{ display:block; max-width:100%; }
 
 /* the copyright line was the one text colour under AA */
 .legal{ color:#84827e; }
+
+/* The line that carries the Bangkok case study across to brands closer to
+   home. Set apart from the narrative above it without becoming a pull quote. */
+.results-bridge{
+  margin:clamp(20px,2.4vw,28px) 0 0;
+  padding-left:clamp(16px,1.8vw,22px);
+  border-left:1px solid var(--accent);
+  max-width:52ch;
+  color:var(--paper);
+  font-size:clamp(.96rem,.92rem + .2vw,1.06rem); line-height:1.65;
+}
+
+/* "Claim your free strategy session" wraps to two lines in the nav on a
+   phone and crowds the wordmark. The hero button carries the full promise;
+   the nav only needs to name the thing. */
+.nav-cta-compact{ display:none; }
+@media (max-width:680px){
+  .nav-cta-full{ display:none; }
+  .nav-cta-compact{ display:inline; }
+}
