@@ -1035,3 +1035,7 @@ img,svg{ display:block; max-width:100%; }
   .nav-cta-full{ display:none; }
   .nav-cta-compact{ display:inline; }
 }
+
+/* a single hard number inside a prose block */
+.case-figure{ margin-top:1.3em; color:var(--paper); }
+.case-figure b{ font-weight:600; }
