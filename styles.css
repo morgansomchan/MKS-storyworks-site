@@ -549,7 +549,10 @@ img,svg{ display:block; max-width:100%; }
 @media (prefers-reduced-motion:reduce){ .a{ transition:none; } }
 
 /* ----------------------------------------------------------- about -- */
-.about{ background:var(--ink-2); border-block:1px solid var(--line-2); }
+/* About now sits directly under Results. Both on the lifted surface
+   merged into one very tall band, so About returns to the ground and
+   Results stays the single raised block in that stretch. */
+.about{ border-block:1px solid var(--line-2); }
 .about-grid{
   display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1fr);
   gap:clamp(30px,5vw,72px); align-items:start;
