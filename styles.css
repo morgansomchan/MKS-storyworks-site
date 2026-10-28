@@ -1039,3 +1039,72 @@ img,svg{ display:block; max-width:100%; }
 /* a single hard number inside a prose block */
 .case-figure{ margin-top:1.3em; color:var(--paper); }
 .case-figure b{ font-weight:600; }
+
+/* =========================================================================
+   The Storystack. Posts live on Substack; this is the shop window for them,
+   built from the same parts as the case study so it does not read as a
+   bolted-on blog.
+   ========================================================================= */
+.page-blog{ background:var(--ink); }
+.blog-head{ padding:clamp(104px,14vh,150px) 0 clamp(10px,1.4vw,18px); }
+
+/* nav gains a second item on this page */
+.nav-right{ display:flex; align-items:center; gap:clamp(16px,2.4vw,30px); }
+.nav-link{
+  color:var(--dim); text-decoration:none;
+  font-size:.76rem; letter-spacing:.15em; text-transform:uppercase;
+  transition:color .25s ease;
+}
+.nav-link:hover{ color:var(--paper); }
+
+.posts{ padding-top:clamp(34px,4.4vw,56px); }
+.post-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line-2); }
+.post{ border-bottom:1px solid var(--line-2); }
+
+.post-link{
+  display:grid; grid-template-columns:minmax(0,.42fr) minmax(0,1fr);
+  gap:clamp(20px,3.4vw,48px); align-items:center;
+  padding-block:clamp(22px,3vw,34px);
+  text-decoration:none; color:inherit;
+}
+.post-shot{
+  aspect-ratio:16/9; overflow:hidden; border-radius:12px; background:var(--ink-2);
+}
+.post-shot img{
+  width:100%; height:100%; object-fit:cover;
+  filter:saturate(.9);
+  transition:transform .6s cubic-bezier(.22,.61,.36,1), filter .4s ease;
+}
+.post-link:hover .post-shot img{ transform:scale(1.04); filter:saturate(1.05); }
+
+.post-date{
+  display:block; margin-bottom:.9em;
+  font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mute);
+}
+.post-title{
+  margin:0 0 .5em; font-family:var(--f-display); font-weight:300;
+  font-size:clamp(1.2rem,1.05rem + .72vw,1.75rem); line-height:1.18;
+  letter-spacing:-.015em; max-width:26ch;
+  transition:color .25s ease;
+}
+.post-link:hover .post-title{ color:var(--accent); }
+.post-dek{
+  margin:0 0 1.1em; color:var(--dim); max-width:52ch;
+  font-size:clamp(.93rem,.9rem + .18vw,1.01rem); line-height:1.6;
+}
+.post-more{
+  display:inline-flex; align-items:center; gap:.5em;
+  font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--mute);
+  transition:color .25s ease, gap .25s ease;
+}
+.post-more::after{ content:"\2192"; font-size:.95rem; letter-spacing:0; }
+.post-link:hover .post-more{ color:var(--paper); gap:.85em; }
+
+@media (max-width:760px){
+  .post-link{ grid-template-columns:1fr; gap:clamp(14px,2.6vw,20px); }
+  .post-title{ max-width:100%; }
+  .nav-right{ gap:14px; }
+}
+@media (max-width:520px){
+  .nav-link{ display:none; }   /* the page is one tap from the footer anyway */
+}
